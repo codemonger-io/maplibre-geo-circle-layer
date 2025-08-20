@@ -10,7 +10,12 @@ permissions:
   packages: write
 
 jobs:
+  verify-dev:
+    uses: ./.github/workflows/build-and-verify.yaml
+
   publish-dev:
+    needs: verify-dev
+
     uses: ./.github/workflows/publish-package.yaml
 
     with:
